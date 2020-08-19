@@ -1,8 +1,11 @@
 import React from 'react';
+import PageDefault from '../../../components/PageDefault';
 
 function CadastroVideo() {
   return (
-    <div>Página de cadastro de vídeo</div>
+    <PageDefault>
+      Página de cadastro de vídeo
+    </PageDefault>
   )
 }
 
