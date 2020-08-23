@@ -4,50 +4,66 @@ import PageDefault from '../../../components/PageDefault';
 
 function CadastroCategoria() {
   const [categorias, setCategorias] = useState(['Teste']);
-  const [nomeDaCategoria, setNomeDaCategoria] = useState('Valor Inicial');
+  const valoresIniciais = {
+    nome: 'Categoria Inicial',
+    descricao: 'Descrição Inicial',
+    cor: '#000',
+  }
+  const [values, setValues] = useState(valoresIniciais);
+
+  function setValue(chave, valor) {
+
+    //chave: pode variar (nome, descrição)
+    setValues({
+      ...values,
+      [chave]: valor, //nome: valor
+    })
+  };
+
   return (
     <PageDefault>
-      <h1>Cadastro de Categoria: {nomeDaCategoria}</h1>
+      <h1>Cadastro de Categoria: {values.nome}</h1>
 
       <form onSubmit={function handleSubmit(infosDoEvento) {
         infosDoEvento.preventDefault();
         setCategorias([
           ...categorias,
-          nomeDaCategoria
+          values
         ]);
       }}>
-        
+
         <div>
-          <label>Nome da categoia
-            <input 
-              type="text" 
-              value={nomeDaCategoria} 
+          <label>Nome da categoria
+            <input
+              type="text"
+              value={values.nome}
               onChange={function funcaoHandler(infosDoEvento) {
-                setNomeDaCategoria(infosDoEvento.target.value);
+                setValue('nome', infosDoEvento.target.value)
+                //setNomeDaCategoria(infosDoEvento.target.value);
               }}
             />
           </label>
         </div>
-        
+
         <div>
           <label>Descrição
-            <textarea 
-              type="text" 
-              value={nomeDaCategoria} 
+            <textarea
+              type="text"
+              value={values.descricao}
               onChange={function funcaoHandler(infosDoEvento) {
-                setNomeDaCategoria(infosDoEvento.target.value);
+                //setNomeDaCategoria(infosDoEvento.target.value);
               }}
             />
           </label>
         </div>
-        
+
         <div>
           <label>Cor
-            <input 
-              type="color" 
-              value={nomeDaCategoria} 
+            <input
+              type="color"
+              value={values.cor}
               onChange={function funcaoHandler(infosDoEvento) {
-                setNomeDaCategoria(infosDoEvento.target.value);
+                //setNomeDaCategoria(infosDoEvento.target.value);
               }}
             />
           </label>
