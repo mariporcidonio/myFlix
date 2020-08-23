@@ -9,25 +9,57 @@ function CadastroCategoria() {
     <PageDefault>
       <h1>Cadastro de Categoria: {nomeDaCategoria}</h1>
 
-      <form>
+      <form onSubmit={function handleSubmit(infosDoEvento) {
+        infosDoEvento.preventDefault();
+        setCategorias([
+          ...categorias,
+          nomeDaCategoria
+        ]);
+      }}>
         
-        <label>Nome da categoia
-          <input 
-            type="text" 
-            value={nomeDaCategoria} 
-            onChange={function funcaoHandler(infosDoEvento) {
-              setNomeDaCategoria(infosDoEvento.target.value);
-            }}
-          />
-        </label>
+        <div>
+          <label>Nome da categoia
+            <input 
+              type="text" 
+              value={nomeDaCategoria} 
+              onChange={function funcaoHandler(infosDoEvento) {
+                setNomeDaCategoria(infosDoEvento.target.value);
+              }}
+            />
+          </label>
+        </div>
+        
+        <div>
+          <label>Descrição
+            <textarea 
+              type="text" 
+              value={nomeDaCategoria} 
+              onChange={function funcaoHandler(infosDoEvento) {
+                setNomeDaCategoria(infosDoEvento.target.value);
+              }}
+            />
+          </label>
+        </div>
+        
+        <div>
+          <label>Cor
+            <input 
+              type="color" 
+              value={nomeDaCategoria} 
+              onChange={function funcaoHandler(infosDoEvento) {
+                setNomeDaCategoria(infosDoEvento.target.value);
+              }}
+            />
+          </label>
+        </div>
 
         <button>Cadastrar</button>
       </form>
 
       <ul>
-        {categorias.map((categoria) => {
+        {categorias.map((categoria, indice) => {
           return (
-            <li key={categoria}>
+            <li key={`${categoria}${indice}`}>
               {categoria}
             </li>
           )
