@@ -11,7 +11,7 @@ function CadastroCategoria() {
   }
   const [categorias, setCategorias] = useState([]);
   const [values, setValues] = useState(valoresIniciais);
-  
+
   function setValue(chave, valor) {
     //chave: pode variar (nome, descrição)
     setValues({
@@ -41,12 +41,23 @@ function CadastroCategoria() {
         setValues(valoresIniciais);
       }}>
 
-        <FormField 
+        <FormField
+          label="Nome da Categoria: "
+          type="text"
+          name="nome"
           value={values.nome}
           onChange={handleChange}
         />
 
-        <div>
+        <FormField
+          label="Descrição: "
+          type="textareabox"
+          name="descricao"
+          value={values.descricao}
+          onChange={handleChange}
+        />
+
+        {/*<div>
           <label>Descrição
             <textarea
               type="text"
@@ -54,18 +65,16 @@ function CadastroCategoria() {
               name="descricao"
               onChange={handleChange} />
           </label>
-        </div>
+        </div>*/}
 
-        <div>
-          <label>Cor
-            <input
-              type="color"
-              value={values.cor}
-              name="cor"
-              onChange={handleChange} />
-          </label>
-        </div>
-
+        <FormField
+          label="Cor: "
+          type="color"
+          name="cor"
+          value={values.cor}
+          onChange={handleChange}
+        />
+        
         <button>Cadastrar</button>
       </form>
 

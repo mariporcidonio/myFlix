@@ -1,14 +1,14 @@
 import React from 'react';
 
-function FormField({ value, onChange}) {
+function FormField({ label, type, name, value, onChange}) {
     return (
         <div>
             <label>
-                Nome da categoria
+                {label}
                 <input 
-                    type="text" 
+                    type={type} 
                     value={value} 
-                    name="nome" 
+                    name={name} 
                     onChange={onChange} 
                 />
             </label>
